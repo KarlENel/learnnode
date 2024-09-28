@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
-import ItemList from './components/ItemLists.vue';
+import ItemList from '../components/ItemList.vue';
 
 let message = ref('');
 let i = 0;
@@ -28,7 +28,7 @@ let toDoItems = computed(() => {
 </script>
 
 <template>
-    <div class="container">
+    <div>
         <div class="content mt-3">
 
         <div class="field has-addons">
@@ -42,9 +42,9 @@ let toDoItems = computed(() => {
             </div>
         </div>
 
-        <ItemLists :items="items" title="All items"></ItemLists>
-        <ItemLists :items="doneItems" title="Done items"></ItemLists>
-        <ItemLists :items="toDoItems" title="To do items"></ItemLists>
+        <ItemList :items="items" title="All items"></ItemList>
+        <ItemList :items="doneItems" title="Done items"></ItemList>
+        <ItemList :items="toDoItems" title="To do items"></ItemList>
         </div>
     </div>
 </template>

@@ -3,7 +3,7 @@ defineProps(['items', 'title']);
 </script>
 
 <template>
-    <h1></h1>
+    <h1>{{ title }}</h1>
     <ul>
         <li v-for="item in items">
             <label class="checkbox">

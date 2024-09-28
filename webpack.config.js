@@ -9,6 +9,8 @@ module.exports = {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true
+        publicPath: '/'
+
     },
     devServer: {
         static: {
@@ -16,6 +18,7 @@ module.exports = {
         },
         compress: true,
         port: 9000,
+        historyApiFallback: true
     },
     module: {
         rules: [
@@ -56,6 +59,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html'
+            // base: '/'
         }),
         new VueLoaderPlugin(),
         new webpack.DefinePlugin({
