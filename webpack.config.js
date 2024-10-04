@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const webpack = require('webpack');
-
+const Dotenv = require('dotenv-webpack');
 module.exports = {
     entry: './src/index.js',
     output: {
@@ -53,7 +53,14 @@ module.exports = {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
-            }
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: '[name][ext]'
+                },
+            },
         ],
     },
     plugins: [
@@ -67,5 +74,6 @@ module.exports = {
             __VUE_PROD_DEVTOOLS__: false,
             __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false
         }),
+        new Dotenv(),
     ],
 };
