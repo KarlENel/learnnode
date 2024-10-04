@@ -10,6 +10,7 @@
     let lat = toRefs(props).lat;
     let lng = toRefs(props).lng;
     let map = null;
+    let zoomDebounce = null;
 
     onMounted(() => {
 
@@ -27,7 +28,10 @@
     });
 
     watch(zoom, (newZoom, oldZoom) => {
-        map.setZoom(newZoom);
+        clearTimeout(zoomDebounce);
+        zoomDebounce = setTimeout(() => {
+           map.setZoom(newZoom); 
+        }, 1000);
     });
     watch(lat, newLat => {
         map.panTo([newLat, lng.value]);
